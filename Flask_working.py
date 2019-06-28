@@ -1,7 +1,9 @@
 # Importing flask module in the project is mandatory 
 # An object of Flask class is our WSGI application. 
-from flask import Flask 
+from flask import Flask, render_template,request,jsonify,make_response
 from new import  chatbot
+import json
+
 # Flask constructor takes the name of 
 # current module (__name__) as argument. 
 app = Flask(__name__) 
@@ -12,15 +14,20 @@ app = Flask(__name__)
 @app.route('/') 
 # ‘/’ URL is bound with hello_world() function. 
 def hello_world():
-    result=chatbot.submit("hello") 
-    print("+++++++++++++++++++++++++++++++")
-    return render_templates('html_file.html')
-    print (result)
-    return result
-
+	return render_template('html_file.html')
+    
+@app.route('/app', methods=['POST'])
+def hello():
+	print(request.form['query'])
+	query= request.form['query']
+	
+	result = c.submit(query)
+	resp = make_response( result['b'] )
+	resp.headers['Access-Control-Allow-Origin'] = '*'
+	return resp
 # main driver function 
 if __name__ == '__main__': 
-
+	c = chatbot()
 	# run() method of Flask class runs the application 
 	# on the local development server. 
 	app.run() 

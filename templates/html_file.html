@@ -1,11 +1,62 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>
+<title>Page Title</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+</head>
+<style>
+ 
+.container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  width:50%;
+}
+div{
+
+  border:solid 2px black;overflow:scroll;
+}
+
+</style>
+
+
+
+
+
 <body>
 
-<p>About me!{{ name }}</p>
+  <center>
+    <div class="container">
+<h1 id="txtResponse"></h1>
+</div>
+<br><input id="txtQuery" type="text"/>
 
+<input type="button" id="btnPost" value="submit"/>
+
+</center>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+$("#btnPost").click(function(){
+  var query = $("#txtQuery").val();
+$.ajax({
+      type: 'post',
+      url: 'http://127.0.0.1:5000/app',
+      data: {'query':query},
+      contentType: 'application/json;charset=UTF-8',
+       success: function (q) {
+        $("#txtResponse").append(q+"<br>")  
+             }
+      });
+})  
+});
+
+
+</script>
 </body>
-</title>
-</head>
+
 </html>
