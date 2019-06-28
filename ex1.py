@@ -5,7 +5,7 @@ import ibm_watson
 
 # Set up Assistant service.
 service = ibm_watson.AssistantV2(
-    iam_apikey = 'vIbIlzCbNyuoKpZExeFxH8XQ22n2HPX0vQCGO3k7FjpA', # replace with API key
+    iam_apikey = '', # replace with API key
     version = '2019-02-28',
     url='https://gateway-lon.watsonplatform.net/assistant/api'
 )
