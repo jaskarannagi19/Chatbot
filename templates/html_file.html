@@ -45,7 +45,7 @@ $("#btnPost").click(function(){
   var query = $("#txtQuery").val();
 $.ajax({
       type: 'post',
-      url: 'http://127.0.0.1:5000/app',
+      url: '/app',
       data: {'query':query},
       contentType: 'application/json;charset=UTF-8',
        success: function (q) {

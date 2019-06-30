@@ -1,7 +1,7 @@
 # Importing flask module in the project is mandatory 
 # An object of Flask class is our WSGI application. 
 from flask import Flask, render_template,request,jsonify,make_response
-from new import  chatbot
+from watson import  chatbot
 import json
 
 # Flask constructor takes the name of 
@@ -15,11 +15,15 @@ app = Flask(__name__)
 # ‘/’ URL is bound with hello_world() function. 
 def hello_world():
 	return render_template('html_file.html')
+
     
 @app.route('/app', methods=['POST'])
 def hello():
-	print(request.form['query'])
-	query= request.form['query']
+	#print("______________________")
+	#data = request.json['query']
+	#print(data)
+	#print("______________________")
+	query= str(request.data)
 	
 	result = c.submit(query)
 	resp = make_response( result['b'] )
